@@ -118,15 +118,29 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //課題：コメントボタンのアクション
         @objc func handleButton2(_ sender: UIButton, forEvent event: UIEvent) {
           
-                //ドキュメントidを取得
+            // タップされたセルのインデックスを求める
+            let touch = event.allTouches?.first
+            let point = touch!.location(in: self.tableView)
+            let indexPath = tableView.indexPathForRow(at: point)
+
+            // 配列からタップされたインデックスのデータを取り出す
+            let postData = postArray[indexPath!.row]
+            print(postData)
             
-            
+            /*
+            let updatetest = "コメント更新"
+            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+            postRef.updateData(["comment": updatetest])
+            */
                 //コメント入力画面に遷移
                    // storyboardのインスタンス取得
                    let storyboard: UIStoryboard = self.storyboard!
             
                    // 遷移先ViewControllerのインスタンス取得
                    let nextView = storyboard.instantiateViewController(withIdentifier: "message") as! MessageView
+            
+            //idをMessageViewのxに渡す
+            MessageView.x = postData
             
                    // 画面遷移
                    self.present(nextView, animated: true, completion: nil)

@@ -6,9 +6,10 @@
 //  Copyright © 2020 ysanematsu. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -18,8 +19,32 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var displayNameTextField: UITextField!
     
     // ログインボタンをタップしたときに呼ばれるメソッド
-        @IBAction func handleLoginbutton(_ sender: Any) {
-            
+        
+    @IBAction func handleLoginButton(_ sender: Any) {
+            if let address = mailAddressTextField.text, let password = passwordTextField.text {
+
+                // アドレスとパスワード名のいずれかでも入力されていない時は何もしない
+                if address.isEmpty || password.isEmpty {
+                    return
+                }
+                
+                // HUDで処理中を表示
+                SVProgressHUD.show()
+
+                Auth.auth().signIn(withEmail: address, password: password) { authResult, error in
+                    if let error = error {
+                        print("DEBUG_PRINT: " + error.localizedDescription)
+                        return
+                    }
+                    print("DEBUG_PRINT: ログインに成功しました。")
+
+                    // HUDを消す
+                    SVProgressHUD.dismiss()
+                    
+                    // 画面を閉じてタブ画面に戻る
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
     }
     
     // アカウント作成ボタンをタップしたときに呼ばれるメソッド
@@ -31,6 +56,10 @@ class LoginViewController: UIViewController {
                 print("DEBUG_PRINT: 何かが空文字です。")
                 return
             }
+            
+            // HUDで処理中を表示
+            SVProgressHUD.show()
+            
             // アドレスとパスワードでユーザー作成。ユーザー作成に成功すると、自動的にログインする
             Auth.auth().createUser(withEmail: address, password: password) {
                 
@@ -55,6 +84,9 @@ class LoginViewController: UIViewController {
                         }
                         print("DEBUG_PRINT: [displayName = \(user.displayName!)]の設定に成功しました。")
 
+                        // HUDを消す
+                        SVProgressHUD.dismiss()
+                        
                         // 画面を閉じてタブ画面に戻る
                         self.dismiss(animated: true, completion: nil)
                     }

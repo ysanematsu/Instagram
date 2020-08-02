@@ -140,7 +140,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                    let nextView = storyboard.instantiateViewController(withIdentifier: "message") as! MessageView
             
             //idをMessageViewのxに渡す
-            MessageView.x = postData
+            nextView.x = postData
             
                    // 画面遷移
                    self.present(nextView, animated: true, completion: nil)

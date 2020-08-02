@@ -39,12 +39,14 @@ class PostViewController: UIViewController {
                 return
             }
             // FireStoreに投稿データを保存する
+            
+            let firstComment: String? = "コメントボタンからコメントを投稿してください。"
             let name = Auth.auth().currentUser?.displayName
             let postDic = [
                 "name": name!,
                 "caption": self.textField.text!,
                 "date": FieldValue.serverTimestamp(),
-                "comment": self.textField.text!
+                "comment": firstComment!
                 ] as [String : Any]
             postRef.setData(postDic)
             // HUDで投稿完了を表示する

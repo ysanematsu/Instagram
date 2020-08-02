@@ -43,7 +43,7 @@ class PostTableViewCell: UITableViewCell {
         
         //課題：コメントの表示
         self.commentLabel.text = "\(postData.name!) : \(postData.comment!)"
-    
+        
         // 日時の表示
         self.dateLabel.text = ""
         if let date = postData.date {

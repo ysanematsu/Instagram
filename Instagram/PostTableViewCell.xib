@@ -102,7 +102,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="captionLabel" destination="081-zs-SNa" id="nAz-6i-3DF"/>
-                <outlet property="commentLabel" destination="AIZ-bg-D6x" id="ftL-S0-1nR"/>
+                <outlet property="commentLabel" destination="AIZ-bg-D6x" id="Bdc-eA-Xbj"/>
                 <outlet property="dateLabel" destination="nQS-fg-cU1" id="Svm-jM-4di"/>
                 <outlet property="likeButton" destination="5Wf-l4-Kr5" id="sGJ-XZ-lOa"/>
                 <outlet property="likeLabel" destination="Onb-ZS-WUp" id="WZF-bC-on8"/>

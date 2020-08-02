@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="845" y="872"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--設定-->
         <scene sceneID="tAd-o3-OcS">
             <objects>
                 <viewController storyboardIdentifier="Setting" id="jwb-v2-OtL" customClass="SettingViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,13 +142,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7qe-TK-PuX"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="設定" image="setting" id="fQn-FE-eqZ"/>
                     <connections>
                         <outlet property="displayNameTextField" destination="Nyi-ko-pIt" id="NMH-UW-X1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQd-F3-bx5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="1582"/>
+            <point key="canvasLocation" x="1590" y="872"/>
         </scene>
         <!--Message View-->
         <scene sceneID="cKp-js-Uc5">
@@ -271,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHb-4y-fYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589.8550724637682" y="871.875"/>
+            <point key="canvasLocation" x="845" y="1582"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="RZE-2s-stT">
@@ -364,7 +365,7 @@
                     <connections>
                         <segue destination="55w-ZA-ADi" kind="relationship" relationship="viewControllers" id="puo-xa-xhG"/>
                         <segue destination="d6L-87-ynC" kind="relationship" relationship="viewControllers" id="LgQ-CV-EPI"/>
-                        <segue destination="8Qd-iG-BPm" kind="relationship" relationship="viewControllers" id="LAu-FB-VzW"/>
+                        <segue destination="jwb-v2-OtL" kind="relationship" relationship="viewControllers" id="EOO-1A-dsN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MrG-Ae-p2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -19,7 +19,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
-    //var unwrap_comment: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +41,11 @@ class PostTableViewCell: UITableViewCell {
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
         
         //課題：コメントの表示
-        self.commentLabel.text = "\(postData.name!) : \(postData.comment!)"
+        if let comment = postData.comment, let commentUser = postData.commentUser {
+        self.commentLabel.text = "\(commentUser) : \(comment)"
+        }else{
+            print("値が設定されていません")
+        }
         
         // 日時の表示
         self.dateLabel.text = ""

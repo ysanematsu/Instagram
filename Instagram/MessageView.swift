@@ -12,8 +12,6 @@ import SVProgressHUD
 
 class MessageView: UIViewController {
     
-    
-    
     @IBOutlet weak var textField: UITextField!
     
     //HomeViewControllerからidを受け取るための変数
@@ -27,9 +25,14 @@ class MessageView: UIViewController {
         let postData = x
         
         //HomeViewcontrollerで取得したidを指定してコメントを送信
-        let updatetest = textField.text
+        let updateComment = textField.text
+        
+        let user = Auth.auth().currentUser
+        let updateUserName = user?.displayName
+        
         let postRef = Firestore.firestore().collection(Const.PostPath).document(postData!.id)
-        postRef.updateData(["comment": updatetest!])
+        postRef.updateData(["comment": updateComment!, "commentUser": updateUserName!])
+        
         /*
         //コメントを送信したユーザー名の取得
         let name = Auth.auth().currentUser?.displayName

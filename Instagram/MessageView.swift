@@ -18,7 +18,6 @@ class MessageView: UIViewController {
     var x: PostData!
     
    //課題：送信ボタンを押して、コメントをFirebaseに送信
-
     @IBAction func commentPost(_ sender: Any) {
 
         //HomeViewControllerから受け取ったidをpostDataに代入
@@ -30,17 +29,11 @@ class MessageView: UIViewController {
         let user = Auth.auth().currentUser
         let updateUserName = user?.displayName
         
-        let postRef = Firestore.firestore().collection(Const.PostPath).document(postData!.id)
-        postRef.updateData(["comment": updateComment!, "commentUser": updateUserName!])
+        let updateCommentValue = FieldValue.arrayUnion([updateComment as Any])
+        let updateUserValue = FieldValue.arrayUnion([updateUserName as Any])
         
-        /*
-        //コメントを送信したユーザー名の取得
-        let name = Auth.auth().currentUser?.displayName
-        let postDic = [
-            "commentName": name!
-            ] as [String : Any]
-        postRef.setData(postDic)
-        */
+        let postRef = Firestore.firestore().collection(Const.PostPath).document(postData!.id)
+        postRef.updateData(["comment": updateCommentValue, "commentUser": updateUserValue])
     }
     
     @IBAction func cancelButton(_ sender: Any) {

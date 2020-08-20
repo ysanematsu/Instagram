@@ -40,12 +40,12 @@ class PostTableViewCell: UITableViewCell {
         // キャプションの表示
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
         
+        
         //課題：コメントの表示
-        if let comment = postData.comment, let commentUser = postData.commentUser {
+        let comment = postData.comment,
+        commentUser = postData.commentUser
         self.commentLabel.text = "\(commentUser) : \(comment)"
-        }else{
-            print("値が設定されていません")
-        }
+        
         
         // 日時の表示
         self.dateLabel.text = ""
